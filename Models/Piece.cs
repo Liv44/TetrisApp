@@ -11,11 +11,11 @@ namespace TetrisApp.Models{
             this.positionX = 0;
             this.positionY = 3;
         }
-        public string printPiece(int[,] piece){
+        public string printPiece(){
             string toPrint2 = "";
             for(int i=0;i<4;i++){
                 for(int j=0; j<4;j++){
-                toPrint2 += string.Join("", piece[i,j]);
+                toPrint2 += string.Join("", this.thisPiece[i,j]);
                 }
                 toPrint2 += "\n";
             }

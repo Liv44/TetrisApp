@@ -1,17 +1,21 @@
 @page "/game"
 @using TetrisApp.Models
 @using TetrisApp.Data
+@using System.Timers;
+
 
 <h1>TETRIS</h1>
-
+<button class="btn btn-primary" @onclick="DropPiece">Poser la pièce</button>
+<button class="btn btn-primary" @onclick="NewPiece">Nouvelle Pièce</button>
+<div class="game">
 <table>
-    @for(int i = 0;i<@option.height;i++){
+    @for(int i = 0;i<20;i++){
         <tr>
-            @for(int j=0;j<@option.width;j++){
-                @if((@grille.grid[i,j])==1){
+            @for(int j=0;j<10;j++){
+                @if((@grilleGood[i,j])==1){
                 <td class="pieceOn"></td>
                 }
-                else if(@grille.grid[i,j]==2){
+                else if(@grilleGood[i,j]==2){
                     <td class="pieceTest"></td>
                 }
                 else{
@@ -21,44 +25,98 @@
         </tr>
     }
     </table>
-<button class="btn btn-primary" @onclick="Piece">Click me</button>
-<button class="btn btn-primary" @onclick="Supp">SUPPRIMER</button>
+<div class="params">
 <button class="btn btn-primary" @onclick="Rotate">ROTATE</button>
-<button class="btn btn-primary" @onclick="MoveRight">DROITE</button>
+<button class="btn btn-primary" @onclick="MoveDown">DESCENDRE</button>
+<br>
 <button class="btn btn-primary" @onclick="MoveLeft">GAUCHE</button>
+<button class="btn btn-primary" @onclick="MoveRight">DROITE</button>
+<p>@score</p>
+
+</div>
+</div>
+<br>
+<button class="btn btn-primary" @onclick="TestLignes">Afficher des lignes pleines</button>
+<button class="btn btn-primary" @onclick="Supp">Supprimer les lignes pleines</button>
+
 
 
 
 @code {
-   Options option = new Options();
-    Piece piece = new Piece();
-    Grid grille = new Grid();
-    @* Game jeu = new Game(); *@
+    Options option = new Options();
+    static Grid grille = new Grid();
+    int score = 0;
 
+    int [,] grilleGood = grille.grid;
+
+    Piece piece;
     static private int hauteur = 20;
     static private int largeur = 10;
-    private int[,] grid = new int[hauteur, largeur];
-    private void Piece()
-    {
+    public void NewPiece(){
+        piece = new Piece();
         grille.AddPiece(piece);
+        grilleGood = grille.gridTemp;
+    }
+
+    private void DropPiece()
+    {
+        if(CheckPieceCreated()){
+
+        grille.DropPiece(piece);
+        grilleGood=grille.grid;
+        score+=100;
+        }
+        piece=null;
     }
 
     private void Supp(){
+
+        grille.CheckFullLines();
         grille.RemoveLines();
+        grilleGood=grille.grid;
     }
 
     private void MoveRight(){
+        if(CheckPieceCreated()){
+
         piece.MoveToRight();
         grille.AddPiece(piece);
-        Console.WriteLine("Je veux bouger ma pièce à droite");
+        grilleGood = grille.gridTemp;
+        }
     }
     private void MoveLeft(){
+        if(CheckPieceCreated()){
+
         piece.MoveToLeft();
         grille.AddPiece(piece);
-        Console.WriteLine("Je veux bouger ma pièce à Gauche");
+        grilleGood = grille.gridTemp;
+        }
+    }
+    private void MoveDown(){
+        if(CheckPieceCreated()){
+        
+        piece.positionX++;
+        grille.AddPiece(piece);
+        grilleGood = grille.gridTemp;
+        }
     }
     private void Rotate(){
+        if(CheckPieceCreated()){
         piece.RotatePiece();
         grille.AddPiece(piece);
+        grilleGood = grille.gridTemp;
+        }
+        
+    }
+
+    private void TestLignes(){
+        grille.TestLignes();
+    }
+
+    private bool CheckPieceCreated(){
+        if(piece !=null){
+            return true;
+        } 
+        return false;
     }
 }
