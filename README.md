@@ -5,6 +5,11 @@
 
 Pour lancer le projet, il suffit d'aller dans le dossier du projet `TetrisApp` et de lancer la commande suivante : `dotnet watch run`.
 
+## Architecture des fichiers
+
+On retrouve les fichiers avec les classes utiliées dans le dossier Models. On y retrouve les classes `Grid`et `Piece`. On retrouve ensuite le fichier `Options.cs`dans le dossier Data pour pouvoir stocker les options enregistrées.
+Les fichiers Razor se trouvent dans le dosser Pages. Il y a `Game`, `Option` et `Credits`. `Game` est le principal utilisé avec toutes les implémentations des classes précédentes et l'affichage de la grille et de ses actions. 
+
 ## Avancée du projet :
 Pour l'instant nous pouvons :
 * Naviguer entre les pages
