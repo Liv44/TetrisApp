@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System;
-using TetrisApp.Data;
+
 namespace TetrisApp.Models {
     public class Grid{
     public int largeur = 10;
@@ -91,7 +91,7 @@ namespace TetrisApp.Models {
             }
             if(counter>=10){
                 this.fullLines.Add(i);
-                
+
             }
             counter = 0;
         }
