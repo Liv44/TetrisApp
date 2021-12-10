@@ -1,12 +1,13 @@
-@page "/counter"
+@page "/game"
 @using TetrisApp.Models
+@using TetrisApp.Data
 
 <h1>TETRIS</h1>
 
 <table>
-    @for(int i = 0;i<@hauteur;i++){
+    @for(int i = 0;i<@option.height;i++){
         <tr>
-            @for(int j=0;j<@largeur;j++){
+            @for(int j=0;j<@option.width;j++){
                 @if((@grille.grid[i,j])==1){
                 <td class="pieceOn"></td>
                 }
@@ -29,17 +30,14 @@
 
 
 @code {
+   Options option = new Options();
     Piece piece = new Piece();
     Grid grille = new Grid();
-    Game jeu = new Game();
+    @* Game jeu = new Game(); *@
 
     static private int hauteur = 20;
     static private int largeur = 10;
     private int[,] grid = new int[hauteur, largeur];
-
-    private bool start = false;
-
-
     private void Piece()
     {
         grille.AddPiece(piece);

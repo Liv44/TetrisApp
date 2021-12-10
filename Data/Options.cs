@@ -1,6 +1,6 @@
 namespace TetrisApp{
     public class Options{
-        int width =0;
-        int height=0;
+        public int width =12;
+        public int height=20;
     }
 }

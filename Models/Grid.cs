@@ -42,8 +42,6 @@ namespace TetrisApp.Models {
 
     public void AddPiece(Piece piece){
         int[,] gridTemp = (int[,]) this.grid.Clone();        
-        // piece.positionY = 3;
-        // positionX=5;
         //Il suffit ensuite de bouger positionX et positionY pour bouger la pièce.
         for(int i = 0; i <4;i++){
             for(int j = 0; j <4;j++){
@@ -83,11 +81,10 @@ namespace TetrisApp.Models {
 
     public void CheckFullLines(){
         int counter = 0;
-        /*on parcourt toutes les lignes du tableau et on supprime si tout est égal à 1.*/
+        /*on parcourt toutes les lignes du tableau et on ajoute l'index de la ligne si tout est égal à 1.*/
         for(int i=0;i<this.height;i++){
             for(int j=0; j<this.width;j++){
                 if(this.grid[i,j]==1){
-                    Console.WriteLine("Compteur " + counter);
                     counter++;
                 }
             }
@@ -96,32 +93,7 @@ namespace TetrisApp.Models {
             }
             counter = 0;
         }
-
-        Console.WriteLine("Nombre de lignes pleines " + fullLines.Count);
     }
 
-    public static int[,] TrimArray(int rowToRemove, int columnToRemove, int[,] originalArray)
-        {
-            int[,] result = new int[originalArray.GetLength(0) - 1, originalArray.GetLength(1) - 1];
-
-            for (int i = 0, j = 0; i < originalArray.GetLength(0); i++)
-            {
-                if (i == rowToRemove)
-                    continue;
-
-                for (int k = 0, u = 0; k < originalArray.GetLength(1); k++)
-                {
-                    if (k == columnToRemove)
-                        continue;
-
-                    result[j, u] = originalArray[i, k];
-                    u++;
-                }
-                j++;
-            }
-
-            return result;
-        }
-
-}
+    }
 }

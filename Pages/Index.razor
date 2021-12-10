@@ -1,9 +1,31 @@
 @page "/"
 
-<h1>Hello, world!</h1>
+@inject NavigationManager NavigationManager 
 
-Welcome to your new app.
+<h1>Tetris en C#</h1>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+Bienvenue sur le Jeu Tetris réalisé en C# ! 
+<hr>
 
-<Counter />
+ <button @onclick="onClick">Play !</button> 
+ <button @onclick="onClick2">Options</button> 
+ <button @onclick="onClick3">Crédits</button> 
+
+
+
+ 
+@code{ 
+    public void onClick(){
+        NavigationManager.NavigateTo("/game"); 
+
+    }
+    public void onClick2(){
+        NavigationManager.NavigateTo("/options"); 
+
+    }
+    public void onClick3(){
+        NavigationManager.NavigateTo("/credits"); 
+
+    }
+
+} 

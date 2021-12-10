@@ -1,0 +1,20 @@
+@page "/options"
+<h1>Options du jeu</h1>
+<form>
+    <label for="vitesse">Choisis une vitesse:</label>
+    <select name="Vitesse" id="vitesse">
+    <option value="Lent">Lent</option>
+    <option value="Normal" selected>Normal</option>
+    <option value="Rapide">Rapide</option>
+    </select>
+    <br>
+    <label for="width">Largeur de la grille</label>
+    <input max="40" min="5" value="10" type="number" name="width"> 
+    <br>
+    <label for="height">Hauteur de la grille</label>
+    <input max="30" min="10" type="number" value="20" name="height">
+</form>
+
+@code {
+
+}
