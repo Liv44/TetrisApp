@@ -1,5 +1,6 @@
 ### TetrisApp
 *Réalisé par Olivia MOREAu en C#*
+:warning: CE PROJET EST EN COURS DE RÉALISATION :warning:
 
 ## Lancement du projet
 
