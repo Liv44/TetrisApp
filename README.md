@@ -1,6 +1,9 @@
-### TetrisApp
-*Réalisé par Olivia MOREAu en C#*
-:warning: CE PROJET EST EN COURS DE RÉALISATION :warning:
+# **TetrisApp**
+
+### *:warning: CE PROJET EST EN COURS DE RÉALISATION :warning:*
+
+*Réalisé par Olivia MOREAU en C#, dans le cadre du module C# B2 Informatique à Nantes Ynov Campus*
+
 
 ## Lancement du projet
 
